@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ngantor/pages/auth_pages/register/widgets/expandable_tile.dart';
 import 'package:ngantor/services/providers/absen_provider.dart';
+import 'package:ngantor/services/providers/auth_provider.dart';
 import 'package:ngantor/utils/colors/app_colors.dart';
 import 'package:ngantor/utils/styles/app_btn_style.dart';
+import 'package:ngantor/utils/widgets/loading_dialog.dart';
 import 'package:provider/provider.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -19,6 +21,9 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
+    final authProv = Provider.of<AuthProvider>(context);
+
+    bool _isloading = authProv.isLoading;
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -61,7 +66,9 @@ class _RegisterPageState extends State<RegisterPage> {
             const SizedBox(height: 24),
             ElevatedButton(
               onPressed: () {
-                // Dummy action
+                showLoadingDialog(context);
+                authProv.registerUser(context, name: _usernameController.text, email: _emailController.text, password: _passwordController.text);
+                hideLoadingDialog(context);
               },
               style: AppBtnStyle.normal,
               child: const Center(
@@ -78,7 +85,9 @@ class _RegisterPageState extends State<RegisterPage> {
               children: [
                 Text("Sudah punya akun?", style: TextStyle(color: AppColors.textSecondary)),
                 TextButton(
-                  onPressed: () => Navigator.pushReplacementNamed(context, "/login"), 
+                  onPressed: () {
+                    
+                  }, 
                   child: Text("Login Sekarang", style: TextStyle(color: AppColors.accent, fontWeight: FontWeight.bold))
                 )
               ],
