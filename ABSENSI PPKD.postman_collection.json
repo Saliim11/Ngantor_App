@@ -1,0 +1,2147 @@
+{
+	"info": {
+		"_postman_id": "268b1207-9ec4-4861-9f6b-0f20f9d8deb4",
+		"name": "ABSENSI PPKD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21204648"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Budi\",\n  \"email\": \"budi@sexamspless.com\",\n  \"password\": \"Password123!\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/register",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Register",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Budi\",\n  \"email\": \"budi@examspless.com\",\n  \"password\": \"Password123!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Apr 2025 01:14:55 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Registrasi berhasil\",\n    \"data\": {\n        \"token\": \"5|ckl7NZOm9I9sDKFIsr2qR00yCDTHNoPiPIuiIgpu75164044\",\n        \"user\": {\n            \"name\": \"Budi\",\n            \"email\": \"budi@examspless.com\",\n            \"updated_at\": \"2025-04-11T01:14:55.000000Z\",\n            \"created_at\": \"2025-04-11T01:14:55.000000Z\",\n            \"id\": 4\n        }\n    }\n}"
+				},
+				{
+					"name": "Email sudah terdaftar",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Budi\",\n  \"email\": \"budi@examspless.com\",\n  \"password\": \"Password123!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"status": "Unprocessable Content",
+					"code": 422,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Apr 2025 02:00:57 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Email sudah terdaftar.\",\n    \"errors\": {\n        \"email\": [\n            \"Email sudah terdaftar.\"\n        ]\n    }\n}"
+				},
+				{
+					"name": "salah params",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"names\": \"Budi\",\n  \"emails\": \"budi@examspless.com\",\n  \"passwords\": \"Password123!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"status": "Unprocessable Content",
+					"code": 422,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Apr 2025 02:01:28 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Nama wajib diisi. (and 2 more errors)\",\n    \"errors\": {\n        \"name\": [\n            \"Nama wajib diisi.\"\n        ],\n        \"email\": [\n            \"Email wajib diisi.\"\n        ],\n        \"password\": [\n            \"Password wajib diisi.\"\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n  \"email\": \"budi@exampe.com\",\n  \"password\": \"password\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/login",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "email/pass salah",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n  \"email\": \"budi@example.com\",\n  \"password\": \"passwords\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Apr 2025 01:58:38 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Email atau password salah\",\n    \"data\": null\n}"
+				},
+				{
+					"name": "Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n  \"email\": \"budi@example.com\",\n  \"password\": \"password\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Apr 2025 01:59:04 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Login berhasil\",\n    \"data\": {\n        \"token\": \"14|zzUM9ra1heamxdO6EcQqmWXEb9eQsqE67NuNWPbV15f2e48d\",\n        \"user\": {\n            \"id\": 1,\n            \"name\": \"budianduks\",\n            \"email\": \"budi@example.com\",\n            \"email_verified_at\": null,\n            \"created_at\": \"2025-04-10T07:01:59.000000Z\",\n            \"updated_at\": \"2025-04-11T01:45:42.000000Z\"\n        }\n    }\n}"
+				},
+				{
+					"name": "Belum terdaftar",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n  \"email\": \"budi@exampe.com\",\n  \"password\": \"password\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Apr 2025 02:00:19 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Email belum terdaftar.\",\n    \"data\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Absen Check In",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"check_in_lat\":\"6.2\",\n    \"check_in_lng\":\"106.8\",\n    \"check_in_address\": \"Jakarta\",\n    \"status\": \"masuk\"\n//   \"status\": \"izin\",\n//   \"alasan_izin\" :\"izin sakit\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/absen/check-in",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"absen",
+						"check-in"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Sudah izin",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"check_in_lat\":\"6.2\",\n    \"check_in_lng\":\"106.8\",\n  \"check_in_address\": \"Jakarta\",\n  \"status\": \"izin\"\n//   \"alasan_izin\" :\"izin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/absen/check-in",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"absen",
+								"check-in"
+							]
+						}
+					},
+					"status": "Conflict",
+					"code": 409,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Apr 2025 01:36:10 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Sudah melakukan izin hari ini\",\n    \"data\": {\n        \"id\": 4,\n        \"user_id\": 1,\n        \"check_in\": \"2025-04-11 01:32:14\",\n        \"check_in_location\": \"-6.2, 106.8\",\n        \"check_in_address\": \"Jakarta\",\n        \"check_out\": null,\n        \"check_out_location\": null,\n        \"check_out_address\": null,\n        \"status\": \"izin\",\n        \"alasan_izin\": \"izin\",\n        \"created_at\": \"2025-04-11T01:32:14.000000Z\",\n        \"updated_at\": \"2025-04-11T01:32:14.000000Z\",\n         \"check_in_lat\": 6.2,\n        \"check_in_lng\": 106.8,\n        \"check_out_lat\": 6.2,\n        \"check_out_lng\": 106.8\n    }\n}"
+				},
+				{
+					"name": "Alasan izin wajib diisi",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"check_in_lat\":\"6.2\",\n    \"check_in_lng\":\"106.8\",\n  \"check_in_address\": \"Jakarta\",\n  \"status\": \"izin\"\n//   \"alasan_izin\" :\"izin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/absen/check-in",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"absen",
+								"check-in"
+							]
+						}
+					},
+					"status": "Unprocessable Content",
+					"code": 422,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Apr 2025 01:38:27 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Alasan izin wajib diisi\",\n    \"data\": null\n}"
+				},
+				{
+					"name": "Izin berhasil",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"check_in_lat\":\"6.2\",\n    \"check_in_lng\":\"106.8\",\n  \"check_in_address\": \"Jakarta\",\n  \"status\": \"izin\",\n  \"alasan_izin\" :\"izin sakit\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/absen/check-in",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"absen",
+								"check-in"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Apr 2025 01:38:55 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Izin berhasil dicatat\",\n    \"data\": {\n        \"user_id\": 1,\n        \"check_in\": \"2025-04-11T01:38:55.980908Z\",\n        \"check_in_location\": \"-6.2, 106.8\",\n        \"check_in_address\": \"Jakarta\",\n        \"status\": \"izin\",\n        \"alasan_izin\": \"izin sakit\",\n        \"updated_at\": \"2025-04-11T01:38:55.000000Z\",\n        \"created_at\": \"2025-04-11T01:38:55.000000Z\",\n        \"id\": 5,\n    }\n}"
+				},
+				{
+					"name": "Absen Check In",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"check_in_lat\":\"6.2\",\n    \"check_in_lng\":\"106.8\",\n    \"check_in_address\": \"Jakarta\",\n    \"status\": \"masuk\"\n//   \"status\": \"izin\",\n//   \"alasan_izin\" :\"izin sakit\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/absen/check-in",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"absen",
+								"check-in"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Apr 2025 02:19:33 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Absen masuk berhasil\",\n    \"data\": {\n        \"user_id\": 5,\n        \"check_in\": \"2025-04-11T02:25:40.875070Z\",\n        \"check_in_location\": \"6.2,106.8\",\n        \"check_in_address\": \"Jakarta\",\n        \"status\": \"masuk\",\n        \"alasan_izin\": null,\n        \"updated_at\": \"2025-04-11T02:25:40.000000Z\",\n        \"created_at\": \"2025-04-11T02:25:40.000000Z\",\n        \"id\": 9,\n        \"check_in_lat\": 6.2,\n        \"check_in_lng\": 106.8,\n        \"check_out_lat\": 6.2,\n        \"check_out_lng\": 106.8\n\n    }\n}"
+				},
+				{
+					"name": "Sudah Check In",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"check_in_lat\":\"6.2\",\n    \"check_in_lng\":\"106.8\",\n    \"check_in_address\": \"Jakarta\",\n    \"status\": \"masuk\"\n//   \"status\": \"izin\",\n//   \"alasan_izin\" :\"izin sakit\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/absen/check-in",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"absen",
+								"check-in"
+							]
+						}
+					},
+					"status": "Conflict",
+					"code": 409,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Apr 2025 02:20:29 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Anda sudah melakukan absen hari ini\",\n    \"data\": {\n        \"id\": 8,\n        \"user_id\": 5,\n        \"check_in\": \"2025-04-11 02:19:33\",\n        \"check_in_location\": \"6.2,106.8\",\n        \"check_in_address\": \"Jakarta\",\n        \"check_out\": null,\n        \"check_out_location\": null,\n        \"check_out_address\": null,\n        \"status\": \"masuk\",\n        \"alasan_izin\": null,\n        \"created_at\": \"2025-04-11T02:19:33.000000Z\",\n        \"updated_at\": \"2025-04-11T02:19:33.000000Z\",\n        \"check_in_lat\": 6.2,\n        \"check_in_lng\": 106.8,\n        \"check_out_lat\": 6.2,\n        \"check_out_lng\": 106.8\n    \n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Absen Check Out",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"check_out_lat\":\"6.2\",\n  \"check_out_lng\":\"106.8\",\n  \"check_out_location\": \"-6.2, 106.8\",\n  \"check_out_address\": \"Jakarta\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/absen/check-out",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"absen",
+						"check-out"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Check Out izin",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"check_out_location\": \"-6.2, 106.8\",\n  \"check_out_address\": \"Jakarta\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/absen/check-out",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"absen",
+								"check-out"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Apr 2025 01:37:29 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Status izin tidak memerlukan absen keluar\",\n    \"data\": {\n        \"id\": 4,\n        \"user_id\": 1,\n        \"check_in\": \"2025-04-11 01:32:14\",\n        \"check_in_location\": \"-6.2, 106.8\",\n        \"check_in_address\": \"Jakarta\",\n        \"check_out\": null,\n        \"check_out_location\": null,\n        \"check_out_address\": null,\n        \"status\": \"izin\",\n        \"alasan_izin\": \"izin\",\n        \"created_at\": \"2025-04-11T01:32:14.000000Z\",\n        \"updated_at\": \"2025-04-11T01:32:14.000000Z\",\n        \"check_in_lat\": 6.2,\n        \"check_in_lng\": 106.8,\n        \"check_out_lat\": 6.2,\n        \"check_out_lng\": 106.8\n    }\n}"
+				},
+				{
+					"name": "Absen Check Out",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"check_out_location\": \"-6.2, 106.8\",\n  \"check_out_address\": \"Jakarta\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/absen/check-out",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"absen",
+								"check-out"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Apr 2025 01:40:11 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Absen keluar berhasil\",\n    \"data\": {\n        \"id\": 6,\n        \"user_id\": 1,\n        \"check_in\": \"2025-04-11 01:39:34\",\n        \"check_in_location\": \"-6.2, 106.8\",\n        \"check_in_address\": \"Jakarta\",\n        \"check_out\": \"2025-04-11T01:40:11.429299Z\",\n        \"check_out_location\": \"-6.2, 106.8\",\n        \"check_out_address\": \"Jakarta\",\n        \"status\": \"masuk\",\n        \"alasan_izin\": null,\n        \"created_at\": \"2025-04-11T01:39:34.000000Z\",\n        \"updated_at\": \"2025-04-11T01:40:11.000000Z\",\n        \"check_in_lat\": 6.2,\n        \"check_in_lng\": 106.8,\n        \"check_out_lat\": 6.2,\n        \"check_out_lng\": 106.8\n    }\n}"
+				},
+				{
+					"name": "Sudah absen keluar",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"check_out_location\": \"-6.2, 106.8\",\n  \"check_out_address\": \"Jakarta\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/absen/check-out",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"absen",
+								"check-out"
+							]
+						}
+					},
+					"status": "Conflict",
+					"code": 409,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Apr 2025 01:40:45 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Anda sudah melakukan absen keluar hari ini\",\n    \"data\": {\n        \"id\": 6,\n        \"user_id\": 1,\n        \"check_in\": \"2025-04-11 01:39:34\",\n        \"check_in_location\": \"-6.2, 106.8\",\n        \"check_in_address\": \"Jakarta\",\n        \"check_out\": \"2025-04-11 01:40:11\",\n        \"check_out_location\": \"-6.2, 106.8\",\n        \"check_out_address\": \"Jakarta\",\n        \"status\": \"masuk\",\n        \"alasan_izin\": null,\n        \"created_at\": \"2025-04-11T01:39:34.000000Z\",\n        \"updated_at\": \"2025-04-11T01:40:11.000000Z\",\n        \"check_in_lat\": 6.2,\n        \"check_in_lng\": 106.8,\n        \"check_out_lat\": 6.2,\n        \"check_out_lng\": 106.8\n    }\n}"
+				},
+				{
+					"name": "Belum absen masuk",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"check_out_location\": \"-6.2, 106.8\",\n  \"check_out_address\": \"Jakarta\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/absen/check-out",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"absen",
+								"check-out"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Apr 2025 01:55:28 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Anda belum melakukan absen masuk hari ini\",\n    \"data\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete absen",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Budi\",\n  \"email\": \"budi@examspless.com\",\n  \"password\": \"Password123!\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/absen/10",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"absen",
+						"10"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete success",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Budi\",\n  \"email\": \"budi@examspless.com\",\n  \"password\": \"Password123!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/absen/9",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"absen",
+								"9"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Apr 2025 02:38:45 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Data absen berhasil dihapus\",\n    \"data\": {\n        \"id\": 9,\n        \"user_id\": 5,\n        \"check_in\": \"2025-04-11 02:25:40\",\n        \"check_in_location\": \"6.2,106.8\",\n        \"check_in_address\": \"Jakarta\",\n        \"check_out\": \"2025-04-11 02:29:25\",\n        \"check_out_location\": \"6.2,106.8\",\n        \"check_out_address\": \"Jakarta\",\n        \"status\": \"masuk\",\n        \"alasan_izin\": null,\n        \"created_at\": \"2025-04-11T02:25:40.000000Z\",\n        \"updated_at\": \"2025-04-11T02:29:25.000000Z\",\n        \"check_in_lat\": 6.2,\n        \"check_in_lng\": 106.8,\n        \"check_out_lat\": 6.2,\n        \"check_out_lng\": 106.8\n    }\n}"
+				},
+				{
+					"name": "id not found",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Budi\",\n  \"email\": \"budi@examspless.com\",\n  \"password\": \"Password123!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/absen/10",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"absen",
+								"10"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Apr 2025 02:38:56 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Data absen tidak ditemukan atau bukan milik Anda\",\n    \"data\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/profile",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"profile"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Profile",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n  \"email\": \"budi@example.com\",\n  \"password\": \"password\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/profile",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"profile"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Apr 2025 01:45:10 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Berhasil mengambil data profil pengguna\",\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Budi\",\n        \"email\": \"budi@example.com\",\n        \"email_verified_at\": null,\n        \"created_at\": \"2025-04-10T07:01:59.000000Z\",\n        \"updated_at\": \"2025-04-10T07:01:59.000000Z\"\n    }\n}"
+				},
+				{
+					"name": "No token",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/profile",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"profile"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Apr 2025 01:54:38 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Unauthenticated.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Edit Profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n  \"name\": \"budianduks\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/profile",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"profile"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Edit Profile berhasil",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n  \"name\": \"budianduks\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/profile",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"profile"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Apr 2025 01:45:42 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Profil berhasil diperbarui\",\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"budianduks\",\n        \"email\": \"budi@example.com\",\n        \"email_verified_at\": null,\n        \"created_at\": \"2025-04-10T07:01:59.000000Z\",\n        \"updated_at\": \"2025-04-11T01:45:42.000000Z\"\n    }\n}"
+				},
+				{
+					"name": "Lupa/salah params",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n  \"names\": \"budianduks\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/profile",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"profile"
+							]
+						}
+					},
+					"status": "Unprocessable Content",
+					"code": 422,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Apr 2025 01:53:29 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Nama wajib diisi.\",\n    \"errors\": {\n        \"name\": [\n            \"Nama wajib diisi.\"\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "History Absen",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n  \"email\": \"budi@example.com\",\n  \"password\": \"password\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/absen/history?start=2025-04-01",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"absen",
+						"history"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "2025-04-01"
+						},
+						{
+							"key": "end",
+							"value": "2025-04-09",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "History Absen by params",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n  \"email\": \"budi@example.com\",\n  \"password\": \"password\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/absen/history?start=2025-04-01&end=2025-04-10",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"absen",
+								"history"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "2025-04-01"
+								},
+								{
+									"key": "end",
+									"value": "2025-04-10"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Apr 2025 01:49:07 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Berhasil mengambil riwayat absensi\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"user_id\": 1,\n            \"check_in\": \"2025-04-10 07:54:40\",\n            \"check_in_location\": \"-6.2, 106.8\",\n            \"check_in_address\": \"Jakarta\",\n            \"check_out\": \"2025-04-10 07:56:51\",\n            \"check_out_location\": \"-6.2, 106.8\",\n            \"check_out_address\": \"Jakarta\",\n            \"status\": \"masuk\",\n            \"alasan_izin\": null,\n            \"created_at\": \"2025-04-10T07:54:40.000000Z\",\n            \"updated_at\": \"2025-04-10T07:56:51.000000Z\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "History Absen",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n  \"email\": \"budi@example.com\",\n  \"password\": \"password\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/absen/history",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"absen",
+								"history"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "2025-04-01",
+									"disabled": true
+								},
+								{
+									"key": "end",
+									"value": "2025-04-10",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Apr 2025 01:49:30 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Berhasil mengambil riwayat absensi\",\n    \"data\": [\n        {\n            \"id\": 6,\n            \"user_id\": 1,\n            \"check_in\": \"2025-04-11 01:39:34\",\n            \"check_in_location\": \"-6.2, 106.8\",\n            \"check_in_address\": \"Jakarta\",\n            \"check_out\": \"2025-04-11 01:40:11\",\n            \"check_out_location\": \"-6.2, 106.8\",\n            \"check_out_address\": \"Jakarta\",\n            \"status\": \"masuk\",\n            \"alasan_izin\": null,\n            \"created_at\": \"2025-04-11T01:39:34.000000Z\",\n            \"updated_at\": \"2025-04-11T01:40:11.000000Z\"\n        },\n        {\n            \"id\": 1,\n            \"user_id\": 1,\n            \"check_in\": \"2025-04-10 07:54:40\",\n            \"check_in_location\": \"-6.2, 106.8\",\n            \"check_in_address\": \"Jakarta\",\n            \"check_out\": \"2025-04-10 07:56:51\",\n            \"check_out_location\": \"-6.2, 106.8\",\n            \"check_out_address\": \"Jakarta\",\n            \"status\": \"masuk\",\n            \"alasan_izin\": null,\n            \"created_at\": \"2025-04-10T07:54:40.000000Z\",\n            \"updated_at\": \"2025-04-10T07:56:51.000000Z\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "No data",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n  \"email\": \"budi@example.com\",\n  \"password\": \"password\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/absen/history",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"absen",
+								"history"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "2025-04-01",
+									"disabled": true
+								},
+								{
+									"key": "end",
+									"value": "2025-04-09",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Apr 2025 01:51:49 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Tidak ada riwayat absensi\",\n    \"data\": []\n}"
+				},
+				{
+					"name": "Params kurang",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n  \"email\": \"budi@example.com\",\n  \"password\": \"password\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/absen/history?start=2025-04-01",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"absen",
+								"history"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "2025-04-01"
+								},
+								{
+									"key": "end",
+									"value": "2025-04-09",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "Unprocessable Content",
+					"code": 422,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Apr 2025 01:52:28 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Harap kirimkan kedua tanggal: start dan end\",\n    \"data\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "All data user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n  \"email\": \"budi@example.com\",\n  \"password\": \"password\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/users",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "end",
+							"value": "2025-04-09",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "All data user",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n  \"email\": \"budi@example.com\",\n  \"password\": \"password\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "end",
+									"value": "2025-04-09",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.12"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 11 Apr 2025 02:10:53 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Berhasil mengambil seluruh data pengguna\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"budianduks\",\n            \"email\": \"budi@example.com\",\n            \"email_verified_at\": null,\n            \"created_at\": \"2025-04-10T07:01:59.000000Z\",\n            \"updated_at\": \"2025-04-11T01:45:42.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Budi\",\n            \"email\": \"budi@examples.com\",\n            \"email_verified_at\": null,\n            \"created_at\": \"2025-04-11T01:12:01.000000Z\",\n            \"updated_at\": \"2025-04-11T01:12:01.000000Z\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Budi\",\n            \"email\": \"budi@exampless.com\",\n            \"email_verified_at\": null,\n            \"created_at\": \"2025-04-11T01:13:29.000000Z\",\n            \"updated_at\": \"2025-04-11T01:13:29.000000Z\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Budi\",\n            \"email\": \"budi@examspless.com\",\n            \"email_verified_at\": null,\n            \"created_at\": \"2025-04-11T01:14:55.000000Z\",\n            \"updated_at\": \"2025-04-11T01:14:55.000000Z\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Budi\",\n            \"email\": \"budi@sexamspless.com\",\n            \"email_verified_at\": null,\n            \"created_at\": \"2025-04-11T02:10:15.000000Z\",\n            \"updated_at\": \"2025-04-11T02:10:15.000000Z\"\n        }\n    ]\n}"
+				}
+			]
+		}
+	]
+}
