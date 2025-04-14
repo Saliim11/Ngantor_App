@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:ngantor/services/api/repo/repo_auth.dart';
+import 'package:ngantor/services/api/repo/auth_repo.dart';
 class AuthServices {
   Future<Map<String, dynamic>> register(String name, String email, String password) async{
     // dapatkan response dari API

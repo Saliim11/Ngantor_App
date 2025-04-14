@@ -23,7 +23,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     final authProv = Provider.of<AuthProvider>(context);
 
-    bool _isloading = authProv.isLoading;
+    // bool _isloading = authProv.isLoading;
 
     return Scaffold(
       backgroundColor: AppColors.background,
