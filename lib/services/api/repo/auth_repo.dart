@@ -5,7 +5,7 @@ import 'package:ngantor/services/api/endpoint.dart';
 
 Future<http.Response> registerUserAPI(String name, String email, String password) {
   return http.post(
-    Uri.parse("https://absen.quidi.id/api/register"),
+    Uri.parse("${Endpoint.baseUrl}/api/register"),
     headers: {'Accept': 'application/json'},
     body: ({
         'name': name,

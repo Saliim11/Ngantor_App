@@ -1,3 +1,3 @@
 class Endpoint {
-  static const String baseUrl = 'https://absen.quidi.id/';
+  static const String baseUrl = "https://absen.quidi.id";
 }

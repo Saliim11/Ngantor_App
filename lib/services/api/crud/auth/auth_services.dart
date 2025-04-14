@@ -15,14 +15,14 @@ class AuthServices {
     }else{
       return {
           'success': false,
-          'message': json['messageasfesf'] ?? 'Terjadi kesalahan saat register',
+          'message': json['message'] ?? 'Terjadi kesalahan saat register',
         };
     }
   }
   
-  Future<Map<String, dynamic>> login(String name, String email, String password) async{
+  Future<Map<String, dynamic>> login(String email, String password) async{
     // dapatkan response dari API
-    final response = await registerUserAPI(name, email, password);
+    final response = await loginUserAPI(email, password);
     final json = jsonDecode(response.body);
     
     if (response.statusCode == 200) {

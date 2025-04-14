@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ngantor/pages/auth_pages/login_page.dart';
+import 'package:ngantor/pages/auth_pages/login/login_page.dart';
 import 'package:ngantor/pages/auth_pages/register/register_page.dart';
+import 'package:ngantor/pages/user_pages/main_screen/main_screen.dart';
 import 'package:ngantor/services/providers/absen_provider.dart';
 import 'package:ngantor/services/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "/login" : (context) => LoginPage(),
         "/register" : (context) => RegisterPage(),
+        "/main" : (context) => MainScreen(),
       },
     );
   }

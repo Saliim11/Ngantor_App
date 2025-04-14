@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:ngantor/services/providers/auth_provider.dart';
 import 'package:ngantor/utils/colors/app_colors.dart';
 import 'package:ngantor/utils/styles/app_btn_style.dart';
+import 'package:ngantor/utils/widgets/loading_dialog.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final authProv = Provider.of<AuthProvider>(context);
+
+    TextEditingController _emailC = new TextEditingController();
+    TextEditingController _passwordC = new TextEditingController();
+
     return Scaffold(
       backgroundColor: AppColors.background,
       body: Center(
@@ -34,6 +42,7 @@ class LoginPage extends StatelessWidget {
 
               // Email
               TextField(
+                controller: _emailC,
                 decoration: InputDecoration(
                   labelText: 'Email',
                   prefixIcon: Icon(Icons.email_outlined),
@@ -44,6 +53,7 @@ class LoginPage extends StatelessWidget {
 
               // Password
               TextField(
+                controller: _passwordC,
                 obscureText: true,
                 decoration: InputDecoration(
                   labelText: 'Password',
@@ -68,7 +78,11 @@ class LoginPage extends StatelessWidget {
 
               // Tombol Login
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  showLoadingDialog(context);
+                  authProv.loginUser(context, email: _emailC.text, password: _passwordC.text);
+                  hideLoadingDialog(context);
+                },
                 style: AppBtnStyle.normal,
                 child: const Text(
                   'Login',
