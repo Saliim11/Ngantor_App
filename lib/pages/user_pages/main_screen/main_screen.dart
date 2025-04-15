@@ -1,10 +1,9 @@
 import 'dart:async';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:intl/intl.dart';
+import 'package:ngantor/pages/user_pages/main_screen/widgets/tanggal_waktu.dart';
 import 'package:ngantor/services/providers/attendance_provider.dart';
 import 'package:ngantor/services/providers/maps_provider.dart';
 import 'package:ngantor/services/shared_preferences/prefs_handler.dart';
@@ -39,56 +38,7 @@ class _MainScreenState extends State<MainScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            height: 100,
-            width: MediaQuery.of(context).size.width * 0.8,
-            margin: const EdgeInsets.only(bottom: 20),
-            decoration: BoxDecoration(
-              color: AppColors.card,
-              borderRadius: BorderRadius.circular(20),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black12,
-                  blurRadius: 10,
-                  offset: Offset(0, 4),
-                )
-              ],
-            ),
-            child: Center(
-              child: StreamBuilder<DateTime>(
-                stream: Stream.periodic(Duration(seconds: 1), (_) => DateTime.now()),
-                builder: (context, snapshot) {
-                  final now = snapshot.data ?? DateTime.now();
-
-                  final formattedDate = DateFormat("EEEE, d MMMM yyyy").format(now);
-                  final formattedTime = DateFormat("HH:mm:ss").format(now);
-
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        formattedDate,
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: AppColors.textSecondary,
-                        ),
-                      ),
-                      SizedBox(height: 4),
-                      Text(
-                        formattedTime,
-                        style: TextStyle(
-                          fontSize: 36,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.textPrimary,
-                          letterSpacing: 2,
-                        ),
-                      ),
-                    ],
-                  );
-                },
-              ),
-            ),
-          ),
+          showTanggalWaktu(context),
           Expanded(
             child: Container(
               width: double.infinity,
@@ -243,4 +193,6 @@ class _MainScreenState extends State<MainScreen> {
       ),
     );
   }
+
+  
 }

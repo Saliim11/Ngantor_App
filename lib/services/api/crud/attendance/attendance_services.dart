@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:ngantor/models/absen_model.dart';
 import 'package:ngantor/services/api/repo/attendance_repo.dart';
 
 class AttendanceServices {
@@ -56,4 +57,17 @@ class AttendanceServices {
         };
     }
   }
+
+  Future<AbsenModel> getAbsensi(String token) async{
+    // dapatkan response dari API
+    final response = await getAbsensiAPI(token);
+    final json = jsonDecode(response.body);
+    
+    if (response.statusCode == 200) {
+      return AbsenModel.fromJson(json as Map<String, dynamic>);
+    }else{
+      throw Exception('Failed to load absensi');
+    }
+  }
+
 }

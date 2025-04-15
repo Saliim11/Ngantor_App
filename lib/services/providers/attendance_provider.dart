@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ngantor/models/absen_model.dart';
 import 'package:ngantor/services/api/crud/attendance/attendance_services.dart';
 import 'package:ngantor/utils/widgets/dialog.dart';
 
@@ -71,5 +72,22 @@ class AttendanceProvider with ChangeNotifier{
       CustomDialog().hide(context);
       CustomDialog().message(context, pesan: "error saat Izin: $e");
     } 
+  }
+
+  List<Datum> _listAbsen = [];
+  List<Datum> get listAbsen => _listAbsen;
+
+  Future<void> getListAbsensi({required String token}) async{
+    _isLoading = true;
+    notifyListeners();
+    try {
+      AbsenModel dataAbsen = await AttendanceServices().getAbsensi(token);
+      _listAbsen = dataAbsen.data ?? [];
+    } catch (e) {
+      throw Exception("Failed to load data absen: $e");
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
   }
 }
