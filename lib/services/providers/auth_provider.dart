@@ -26,12 +26,13 @@ class AuthProvider with ChangeNotifier {
         Navigator.pushReplacementNamed(context, "/login");
         
       } else {
+        hideLoadingDialog(context);
         showSnackBar(context, _responseReg['message']);
       }
       
     } catch (e) {
       print("error saat register: $e");
-
+      hideLoadingDialog(context);
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -51,11 +52,13 @@ class AuthProvider with ChangeNotifier {
         Navigator.pushReplacementNamed(context, "/main");
         
       } else {
+        hideLoadingDialog(context);
         showSnackBar(context, _responseLog['message']);
       }
       
     } catch (e) {
       print("error saat login: $e");
+      hideLoadingDialog(context);
 
     } finally {
       _isLoading = false;
