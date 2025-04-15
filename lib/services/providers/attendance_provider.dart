@@ -30,6 +30,30 @@ class AttendanceProvider with ChangeNotifier{
     }
   }
 
+  Future<void> checkOutUser(BuildContext context, {required double lat, required double long, required String location, required String address, required String token}) async{
+    _isLoading = true;
+    notifyListeners();
+    try {
+      Map<String, dynamic> _responseReg = await AttendanceServices().checkOut(lat, long, location, address, token);
+
+      if (_responseReg["success"] == true) {
+        CustomDialog().hide(context);
+        CustomDialog().message(context, pesan: _responseReg['data']['message']);
+        
+      } else {
+        CustomDialog().hide(context);
+        CustomDialog().message(context, pesan: _responseReg['message']);
+      }
+      
+    } catch (e) {
+      CustomDialog().hide(context);
+      CustomDialog().message(context, pesan: "error saat Check in: $e");
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+
   Future<void> checkInIzinUser(BuildContext context, {required double lat, required double long, required String address, required String token, required String alasan}) async{
     try {
       Map<String, dynamic> _responseReg = await AttendanceServices().checkInIzin(lat, long, address, token, alasan);

@@ -16,7 +16,25 @@ class AttendanceServices {
     }else{
       return {
           'success': false,
-          'message': json['message'] ?? 'Terjadi kesalahan saat checkin',
+          'message': json['message'] ?? 'Terjadi kesalahan saat check in',
+        };
+    }
+  }
+
+  Future<Map<String, dynamic>> checkOut(double lat, double long, String location, String address, String token) async{
+    // dapatkan response dari API
+    final response = await checkOutUserAPI(lat, long, location, address, token);
+    final json = jsonDecode(response.body);
+    
+    if (response.statusCode == 200) {
+      return {
+          'success': true,
+          'data': json,
+        };
+    }else{
+      return {
+          'success': false,
+          'message': json['message'] ?? 'Terjadi kesalahan saat check out',
         };
     }
   }
@@ -34,7 +52,7 @@ class AttendanceServices {
     }else{
       return {
           'success': false,
-          'message': json['message'] ?? 'Terjadi kesalahan saat checkin',
+          'message': json['message'] ?? 'Terjadi kesalahan saat izin',
         };
     }
   }

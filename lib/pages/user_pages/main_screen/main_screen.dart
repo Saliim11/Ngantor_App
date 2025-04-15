@@ -46,6 +46,7 @@ class MainScreen extends StatelessWidget {
 
           showModalBottomSheet(
             context: context,
+            isScrollControlled: true,
             builder: (context) {
               String _currentAddress = mapsProv.currentAddress;
               String _currentAddress2 = mapsProv.currentAddress2;
@@ -98,41 +99,75 @@ class MainScreen extends StatelessWidget {
                     ),
 
                     const SizedBox(height: 24),
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton.icon(
-                        onPressed: () {
-                          showDialog(
-                            context: context, 
-                            builder: (context) {
-                              return AlertDialog(
-                                title: Text("Checkin Kantor"),
-                                content: Text("Anda akan melakukan checkin di\n$_currentAddress2\n"),
-                                actionsAlignment: MainAxisAlignment.spaceBetween,
-                                actions: [
-                                  TextButton(
-                                    onPressed: (){}, 
-                                    child: Text("Izin", style: TextStyle(color: AppColors.textPrimary))
-                                  ),
-
-                                  ElevatedButton(
-                                    onPressed: () async{
-                                      String token = await PrefsHandler.getToken();
-                                      print("isi token: $token");
-                                      await attendProv.checkInUser(context, lat: _currentLat, long: _currentLong, address: _currentAddress, token: token);
-                                    }, 
-                                    style: AppBtnStyle.normal,
-                                    child: Text("Check in")
-                                  ),
-                                ],
+                    Row(
+                      children: [
+                        Expanded(
+                          child: ElevatedButton.icon(
+                            onPressed: () {
+                              showDialog(
+                                context: context, 
+                                builder: (context) {
+                                  return AlertDialog(
+                                    title: Text("Check out Kantor"),
+                                    content: Text("Anda akan melakukan Check out di\n$_currentAddress2\n"),
+                                    actionsAlignment: MainAxisAlignment.center,
+                                    actions: [           
+                                      ElevatedButton(
+                                        onPressed: () async{
+                                          String token = await PrefsHandler.getToken();
+                                          print("isi token: $token");
+                                          await attendProv.checkOutUser(context, lat: _currentLat, long: _currentLong, location: _currentLatLong, address: _currentAddress, token: token);
+                                        }, 
+                                        style: AppBtnStyle.merah,
+                                        child: Text("Check out")
+                                      ),
+                                    ],
+                                  );
+                                },
                               );
                             },
-                          );
-                        },
-                        icon: const Icon(Icons.login, color: Colors.white),
-                        label: const Text("Check-In Sekarang"),
-                        style: AppBtnStyle.hijau
-                      ),
+                            icon: const Icon(Icons.logout, color: Colors.white),
+                            label: const Text("Check-out"),
+                            style: AppBtnStyle.merah
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                        Expanded(
+                          child: ElevatedButton.icon(
+                            onPressed: () {
+                              showDialog(
+                                context: context, 
+                                builder: (context) {
+                                  return AlertDialog(
+                                    title: Text("Check in Kantor"),
+                                    content: Text("Anda akan melakukan check in di\n$_currentAddress2\n"),
+                                    actionsAlignment: MainAxisAlignment.spaceBetween,
+                                    actions: [
+                                      TextButton(
+                                        onPressed: (){}, 
+                                        child: Text("Izin", style: TextStyle(color: AppColors.textPrimary))
+                                      ),
+                                                  
+                                      ElevatedButton(
+                                        onPressed: () async{
+                                          String token = await PrefsHandler.getToken();
+                                          print("isi token: $token");
+                                          await attendProv.checkInUser(context, lat: _currentLat, long: _currentLong, address: _currentAddress, token: token);
+                                        }, 
+                                        style: AppBtnStyle.hijau,
+                                        child: Text("Check in")
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                            icon: const Icon(Icons.login, color: Colors.white),
+                            label: const Text("Check-In"),
+                            style: AppBtnStyle.hijau
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 )
