@@ -4,10 +4,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:ngantor/services/providers/attendance_provider.dart';
 import 'package:ngantor/services/providers/maps_provider.dart';
+import 'package:ngantor/services/shared_preferences/prefs_handler.dart';
 import 'package:ngantor/utils/colors/app_colors.dart';
 import 'package:ngantor/utils/styles/app_btn_style.dart';
-import 'package:ngantor/utils/widgets/loading_dialog.dart';
+import 'package:ngantor/utils/widgets/dialog.dart';
 import 'package:provider/provider.dart';
 
 class MainScreen extends StatelessWidget {
@@ -38,17 +40,20 @@ class MainScreen extends StatelessWidget {
 
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          showLoadingDialog(context);
+          CustomDialog().loading(context);
           await mapsProv.fetchLocation();
-          hideLoadingDialog(context);
+          CustomDialog().hide(context);
 
           showModalBottomSheet(
             context: context,
             builder: (context) {
               String _currentAddress = mapsProv.currentAddress;
+              String _currentAddress2 = mapsProv.currentAddress2;
               String _currentLatLong = mapsProv.currentLatLong;
               final _currentLat = mapsProv.currentLat;
               final _currentLong = mapsProv.currentLong;
+
+              final attendProv = Provider.of<AttendanceProvider>(context);
 
               return Container(
                 padding: EdgeInsets.all(16),
@@ -97,7 +102,32 @@ class MainScreen extends StatelessWidget {
                       width: double.infinity,
                       child: ElevatedButton.icon(
                         onPressed: () {
-                          // aksi check-in
+                          showDialog(
+                            context: context, 
+                            builder: (context) {
+                              return AlertDialog(
+                                title: Text("Checkin Kantor"),
+                                content: Text("Anda akan melakukan checkin di\n$_currentAddress2\n"),
+                                actionsAlignment: MainAxisAlignment.spaceBetween,
+                                actions: [
+                                  TextButton(
+                                    onPressed: (){}, 
+                                    child: Text("Izin", style: TextStyle(color: AppColors.textPrimary))
+                                  ),
+
+                                  ElevatedButton(
+                                    onPressed: () async{
+                                      String token = await PrefsHandler.getToken();
+                                      print("isi token: $token");
+                                      await attendProv.checkInUser(context, lat: _currentLat, long: _currentLong, address: _currentAddress, token: token);
+                                    }, 
+                                    style: AppBtnStyle.normal,
+                                    child: Text("Check in")
+                                  ),
+                                ],
+                              );
+                            },
+                          );
                         },
                         icon: const Icon(Icons.login, color: Colors.white),
                         label: const Text("Check-In Sekarang"),

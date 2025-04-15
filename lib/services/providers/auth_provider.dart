@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:ngantor/services/api/crud/auth/auth_services.dart';
 import 'package:ngantor/services/shared_preferences/prefs_handler.dart';
-import 'package:ngantor/utils/widgets/loading_dialog.dart';
+import 'package:ngantor/utils/widgets/dialog.dart';
 import 'package:ngantor/utils/widgets/snackbar.dart';
 
 class AuthProvider with ChangeNotifier {
@@ -23,17 +23,17 @@ class AuthProvider with ChangeNotifier {
 
       if (_responseReg["success"] == true) {
         showSnackBar(context, _responseReg['data']['message']);
-        hideLoadingDialog(context);
+        CustomDialog().hide(context);
         Navigator.pushReplacementNamed(context, "/login");
         
       } else {
-        hideLoadingDialog(context);
+        CustomDialog().hide(context);
         showSnackBar(context, _responseReg['message']);
       }
       
     } catch (e) {
       print("error saat register: $e");
-      hideLoadingDialog(context);
+      CustomDialog().hide(context);
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -50,17 +50,17 @@ class AuthProvider with ChangeNotifier {
       if (_responseLog["success"] == true) {
         PrefsHandler.saveToken(_responseLog['data']['data']['token']);
         showSnackBar(context, _responseLog['data']['message']);
-        hideLoadingDialog(context);
+        CustomDialog().hide(context);
         Navigator.pushReplacementNamed(context, "/main");
         
       } else {
-        hideLoadingDialog(context);
+        CustomDialog().hide(context);
         showSnackBar(context, _responseLog['message']);
       }
       
     } catch (e) {
       print("error saat login: $e");
-      hideLoadingDialog(context);
+      CustomDialog().hide(context);
 
     } finally {
       _isLoading = false;

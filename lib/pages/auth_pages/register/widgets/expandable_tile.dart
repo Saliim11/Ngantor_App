@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ngantor/services/providers/absen_provider.dart';
+import 'package:ngantor/services/providers/widget_provider.dart';
 import 'package:ngantor/utils/colors/app_colors.dart';
 import 'package:provider/provider.dart';
 
@@ -13,7 +13,7 @@ Widget buildExpandableField(
     required bool isFilled,
     bool obscureText = false,
   }) {
-  final prov = Provider.of<AbsenProvider>(context);
+  final prov = Provider.of<WidgetProvider>(context);
   int? expandedField = prov.expandedField;
 
   final bool isExpanded = expandedField == index;

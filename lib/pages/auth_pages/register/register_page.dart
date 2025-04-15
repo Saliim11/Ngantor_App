@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ngantor/pages/auth_pages/register/widgets/expandable_tile.dart';
-import 'package:ngantor/services/providers/absen_provider.dart';
+import 'package:ngantor/services/providers/widget_provider.dart';
 import 'package:ngantor/services/providers/auth_provider.dart';
 import 'package:ngantor/utils/colors/app_colors.dart';
 import 'package:ngantor/utils/styles/app_btn_style.dart';
-import 'package:ngantor/utils/widgets/loading_dialog.dart';
+import 'package:ngantor/utils/widgets/dialog.dart';
 import 'package:provider/provider.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -44,7 +44,7 @@ class _RegisterPageState extends State<RegisterPage> {
               label: 'Username',
               icon: Icons.person_outline,
               controller: _usernameController,
-              isFilled: context.watch<AbsenProvider>().isFilledUsername
+              isFilled: context.watch<WidgetProvider>().isFilledUsername
             ),
             buildExpandableField(
               context,
@@ -52,7 +52,7 @@ class _RegisterPageState extends State<RegisterPage> {
               label: 'Email',
               icon: Icons.email_outlined,
               controller: _emailController,
-              isFilled: context.watch<AbsenProvider>().isFilledEmail
+              isFilled: context.watch<WidgetProvider>().isFilledEmail
             ),
             buildExpandableField(
               context,
@@ -60,13 +60,13 @@ class _RegisterPageState extends State<RegisterPage> {
               label: 'Password',
               icon: Icons.lock_outline,
               controller: _passwordController,
-              isFilled: context.watch<AbsenProvider>().isFilledPassword,
+              isFilled: context.watch<WidgetProvider>().isFilledPassword,
               obscureText: true,
             ),
             const SizedBox(height: 24),
             ElevatedButton(
               onPressed: () async {
-                showLoadingDialog(context);
+                CustomDialog().loading(context);
                 await authProv.registerUser(context, name: _usernameController.text, email: _emailController.text, password: _passwordController.text);
               },
               style: AppBtnStyle.normal,

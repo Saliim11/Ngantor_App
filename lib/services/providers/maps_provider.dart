@@ -7,12 +7,14 @@ import 'package:ngantor/services/geo/geo_service.dart';
 class MapsProvider with ChangeNotifier {
   bool _isLoading = false;
   String _currentAddress = "Unknown";
+  String _currentAddress2 = "Unknown";
   String _currentLatLong = "Unknown";
   double _currentLat = 0;
   double _currentLong = 0;
 
   bool get isLoading => _isLoading;
   String get currentAddress => _currentAddress;
+  String get currentAddress2 => _currentAddress2;
   String get currentLatLong => _currentLatLong;
   double get currentLat => _currentLat;
   double get currentLong => _currentLong;
@@ -41,9 +43,10 @@ class MapsProvider with ChangeNotifier {
 
       if (placemarks.isNotEmpty) {
         Placemark place = placemarks.first;
-        
         _currentAddress =
-            "${place.street}, ${place.subLocality}, ${place.locality}, ${place.subAdministrativeArea}, ${place.administrativeArea}, ${place.country}, ${place.postalCode}, ${place.country}, ${place.isoCountryCode}";
+               "${place.street}, ${place.subLocality}, ${place.locality}, ${place.subAdministrativeArea}, ${place.administrativeArea}, ${place.country}, ${place.postalCode}, ${place.country}, ${place.isoCountryCode}";
+        _currentAddress2 =
+            "Jalan:\n${place.street}\nKelurahan:\n${place.subLocality}\nKecamatan:\n${place.locality}\nKota:\n${place.subAdministrativeArea}\nProvinsi:\n${place.administrativeArea}\nNegara:\n${place.country}, ${place.isoCountryCode}\nKode pos:\n${place.postalCode}";
         _currentLatLong = "${position.latitude}, ${position.longitude}";
         _currentLat = position.latitude;
         _currentLong = position.longitude;

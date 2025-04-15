@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ngantor/services/providers/auth_provider.dart';
 import 'package:ngantor/utils/colors/app_colors.dart';
 import 'package:ngantor/utils/styles/app_btn_style.dart';
-import 'package:ngantor/utils/widgets/loading_dialog.dart';
+import 'package:ngantor/utils/widgets/dialog.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatelessWidget {
@@ -79,7 +79,7 @@ class LoginPage extends StatelessWidget {
               // Tombol Login
               ElevatedButton(
                 onPressed: () async{
-                  showLoadingDialog(context);
+                  CustomDialog().loading(context);
                   await authProv.loginUser(context, email: _emailC.text, password: _passwordC.text);
                   
                 },
