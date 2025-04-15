@@ -4,6 +4,7 @@ import 'package:ngantor/pages/auth_pages/register/register_page.dart';
 import 'package:ngantor/pages/user_pages/main_screen/main_screen.dart';
 import 'package:ngantor/services/providers/absen_provider.dart';
 import 'package:ngantor/services/providers/auth_provider.dart';
+import 'package:ngantor/services/providers/maps_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -12,6 +13,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (context) => AbsenProvider(),),
         ChangeNotifierProvider(create: (context) => AuthProvider(),),
+        ChangeNotifierProvider(create: (context) => MapsProvider(),),
       ],
       child: MyApp(),
     ),

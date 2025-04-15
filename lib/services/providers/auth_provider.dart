@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:ngantor/services/api/crud/auth/auth_services.dart';
+import 'package:ngantor/utils/widgets/loading_dialog.dart';
 import 'package:ngantor/utils/widgets/snackbar.dart';
 
 class AuthProvider with ChangeNotifier {
@@ -12,7 +13,7 @@ class AuthProvider with ChangeNotifier {
   Map<String, dynamic> _responseLog = {};
   Map<String, dynamic> get responseLog => _responseLog;
 
-  void registerUser(BuildContext context, {required String name, required String email, required String password}) async{
+  Future<void> registerUser(BuildContext context, {required String name, required String email, required String password}) async{
     _isLoading = true;
     notifyListeners();
     
@@ -21,6 +22,7 @@ class AuthProvider with ChangeNotifier {
 
       if (_responseReg["success"] == true) {
         showSnackBar(context, _responseReg['data']['message']);
+        hideLoadingDialog(context);
         Navigator.pushReplacementNamed(context, "/login");
         
       } else {
@@ -36,7 +38,7 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
-  void loginUser(BuildContext context, {required String email, required String password}) async{
+  Future<void> loginUser(BuildContext context, {required String email, required String password}) async{
     _isLoading = true;
     notifyListeners();
     
@@ -45,6 +47,7 @@ class AuthProvider with ChangeNotifier {
 
       if (_responseLog["success"] == true) {
         showSnackBar(context, _responseLog['data']['message']);
+        hideLoadingDialog(context);
         Navigator.pushReplacementNamed(context, "/main");
         
       } else {

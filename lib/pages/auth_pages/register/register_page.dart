@@ -65,10 +65,9 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
             const SizedBox(height: 24),
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 showLoadingDialog(context);
-                authProv.registerUser(context, name: _usernameController.text, email: _emailController.text, password: _passwordController.text);
-                hideLoadingDialog(context);
+                await authProv.registerUser(context, name: _usernameController.text, email: _emailController.text, password: _passwordController.text);
               },
               style: AppBtnStyle.normal,
               child: const Center(

@@ -1,13 +1,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<!-- Additional permission -->
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 <uses-permission android:name="android.permission.INTERNET"/>
+<!-- Additional permission -->
     <application
         android:label="ngantor"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
+        <!-- Additional Google API KEY -->
         <meta-data android:name="com.google.android.geo.API_KEY"
                 android:value="AIzaSyAE3Q3MpbAEYfbOOpmmsLSWjpBMKh-5TGc"/>
+        <!-- Additional Google API KEY -->
         <activity
             android:name=".MainActivity"
             android:exported="true"

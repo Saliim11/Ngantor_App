@@ -78,10 +78,10 @@ class LoginPage extends StatelessWidget {
 
               // Tombol Login
               ElevatedButton(
-                onPressed: () {
+                onPressed: () async{
                   showLoadingDialog(context);
-                  authProv.loginUser(context, email: _emailC.text, password: _passwordC.text);
-                  hideLoadingDialog(context);
+                  await authProv.loginUser(context, email: _emailC.text, password: _passwordC.text);
+                  
                 },
                 style: AppBtnStyle.normal,
                 child: const Text(

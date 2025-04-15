@@ -1,12 +1,11 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:ngantor/services/geo/geo_service.dart';
 
 class MapsProvider with ChangeNotifier {
-  bool _isLoading = true;
+  bool _isLoading = false;
   String _currentAddress = "Unknown";
   String _currentLatLong = "Unknown";
   double _currentLat = 0;
@@ -24,11 +23,12 @@ class MapsProvider with ChangeNotifier {
     try {
       LatLng userLocation = await GeoService().determineUserLocation();
       await _getAddressFromLatLng(userLocation);
-      notifyListeners();
-
-      _isLoading = false;
+      
     } catch (e) {
       print("Error fetching location: $e");
+    } finally {
+      _isLoading = false;
+      notifyListeners();
     }
   }
 
