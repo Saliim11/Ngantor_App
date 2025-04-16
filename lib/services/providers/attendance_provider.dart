@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ngantor/models/absen_model.dart';
 import 'package:ngantor/services/api/crud/attendance/attendance_services.dart';
+import 'package:ngantor/services/shared_preferences/prefs_handler.dart';
 import 'package:ngantor/utils/widgets/dialog.dart';
 
 class AttendanceProvider with ChangeNotifier{
@@ -14,6 +15,7 @@ class AttendanceProvider with ChangeNotifier{
       Map<String, dynamic> _responseReg = await AttendanceServices().checkIn(lat, long, address, token);
 
       if (_responseReg["success"] == true) {
+        getListAbsensi();
         CustomDialog().hide(context);
         CustomDialog().message(context, pesan: _responseReg['data']['message']);
         
@@ -38,6 +40,7 @@ class AttendanceProvider with ChangeNotifier{
       Map<String, dynamic> _responseReg = await AttendanceServices().checkOut(lat, long, location, address, token);
 
       if (_responseReg["success"] == true) {
+        getListAbsensi();
         CustomDialog().hide(context);
         CustomDialog().message(context, pesan: _responseReg['data']['message']);
         
@@ -60,6 +63,7 @@ class AttendanceProvider with ChangeNotifier{
       Map<String, dynamic> _responseReg = await AttendanceServices().checkInIzin(lat, long, address, token, alasan);
 
       if (_responseReg["success"] == true) {
+        getListAbsensi();
         CustomDialog().hide(context);
         CustomDialog().message(context, pesan: _responseReg['data']['message']);
         
@@ -77,9 +81,10 @@ class AttendanceProvider with ChangeNotifier{
   List<Datum> _listAbsen = [];
   List<Datum> get listAbsen => _listAbsen;
 
-  Future<void> getListAbsensi({required String token}) async{
+  Future<void> getListAbsensi() async{
     _isLoading = true;
     notifyListeners();
+    String token = await PrefsHandler.getToken();
     try {
       AbsenModel dataAbsen = await AttendanceServices().getAbsensi(token);
       _listAbsen = dataAbsen.data ?? [];
@@ -89,5 +94,20 @@ class AttendanceProvider with ChangeNotifier{
       _isLoading = false;
       notifyListeners();
     }
+  }
+
+  Future<void> deleteAbsenUser(BuildContext context, {required int id}) async{
+    String token = await PrefsHandler.getToken();
+
+    try {
+      String resultMsg = await AttendanceServices().deleteAbsen(token, id);
+      getListAbsensi();
+      CustomDialog().hide(context);
+      CustomDialog().message(context, pesan: resultMsg);
+    } catch (e) {
+      CustomDialog().hide(context);
+      CustomDialog().message(context, pesan: "error saat delete: $e");
+    }
+
   }
 }

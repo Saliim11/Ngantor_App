@@ -43,8 +43,14 @@ Future<http.Response> checkInIzinUserAPI(double lat, double long, String address
 
 Future<http.Response> getAbsensiAPI(String token) {
   return http.get(
-    Uri.parse("${Endpoint.baseUrl}/api/absen/check-in"),
+    Uri.parse("${Endpoint.baseUrl}/api/absen/history"),
     headers: {'Accept': 'application/json', 'Authorization': "Bearer $token"}
   );
 }
 
+Future<http.Response> deleteAbsenAPI(String token, int id) {
+  return http.delete(
+    Uri.parse("${Endpoint.baseUrl}/api/absen/$id"),
+    headers: {'Accept': 'application/json', 'Authorization': "Bearer $token"}
+  );
+}

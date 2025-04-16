@@ -81,7 +81,6 @@ class LoginPage extends StatelessWidget {
                 onPressed: () async{
                   CustomDialog().loading(context);
                   await authProv.loginUser(context, email: _emailC.text, password: _passwordC.text);
-                  
                 },
                 style: AppBtnStyle.normal,
                 child: const Text(

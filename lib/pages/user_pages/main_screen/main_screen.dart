@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:ngantor/pages/user_pages/main_screen/widgets/list_absensi.dart';
 import 'package:ngantor/pages/user_pages/main_screen/widgets/tanggal_waktu.dart';
 import 'package:ngantor/services/providers/attendance_provider.dart';
 import 'package:ngantor/services/providers/maps_provider.dart';
@@ -23,8 +24,19 @@ class _MainScreenState extends State<MainScreen> {
   final Completer<GoogleMapController> _controller = Completer<GoogleMapController>();
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Future.microtask(() => 
+      Provider.of<AttendanceProvider>(context, listen: false).getListAbsensi()
+    );
+  }
+  @override
   Widget build(BuildContext context) {
     final mapsProv = Provider.of<MapsProvider>(context);
+    final attendProv = Provider.of<AttendanceProvider>(context);
+    bool isLoading = attendProv.isLoading;
+    
     return Scaffold(
       backgroundColor: AppColors.primary,
       appBar: AppBar(
@@ -46,6 +58,9 @@ class _MainScreenState extends State<MainScreen> {
                 color: AppColors.background,
                 borderRadius: BorderRadius.vertical(top: Radius.circular(20))
               ),
+              child: isLoading
+                ? Center(child: CircularProgressIndicator(color: AppColors.accent))
+                : buildListAbsensi(attendProv.listAbsen, attendProv)
             ),
           )
         ],
@@ -157,7 +172,9 @@ class _MainScreenState extends State<MainScreen> {
                                     actionsAlignment: MainAxisAlignment.spaceBetween,
                                     actions: [
                                       TextButton(
-                                        onPressed: (){}, 
+                                        onPressed: (){
+                                          //showdialogizin
+                                        }, 
                                         child: Text("Izin", style: TextStyle(color: AppColors.textPrimary))
                                       ),
                                                   

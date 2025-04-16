@@ -70,4 +70,11 @@ class AttendanceServices {
     }
   }
 
+  Future<String> deleteAbsen(String token, int id) async{
+    final response = await deleteAbsenAPI(token, id);
+    final json = jsonDecode(response.body);
+    
+    return json["message"] ?? "default error delete";
+  }
+
 }
