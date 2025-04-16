@@ -174,6 +174,30 @@ class _MainScreenState extends State<MainScreen> {
                                       TextButton(
                                         onPressed: (){
                                           //showdialogizin
+                                          TextEditingController _contAlasan = new TextEditingController();
+                                          showDialog(
+                                            context: context, 
+                                            builder: (context) {
+                                              return AlertDialog(
+                                                title: Text("Izin Kantor"),
+                                                content: TextField(
+                                                  controller: _contAlasan,
+                                                  decoration: InputDecoration(
+                                                    hintText: "Masukkan alasan izin"
+                                                  ),
+                                                ),
+                                                actions: [
+                                                  ElevatedButton(
+                                                    onPressed: () async {
+                                                      String token = await PrefsHandler.getToken();
+                                                      await attendProv.checkInIzinUser(context, lat: _currentLat, long: _currentLong, address: _currentAddress, token: token, alasan: _contAlasan.text);
+                                                    }, 
+                                                    child: Text("Izin")
+                                                  )
+                                                ],
+                                              );
+                                            },
+                                          );
                                         }, 
                                         child: Text("Izin", style: TextStyle(color: AppColors.textPrimary))
                                       ),
