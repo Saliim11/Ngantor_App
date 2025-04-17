@@ -3,11 +3,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:ngantor/models/user_model.dart';
 import 'package:ngantor/pages/user_pages/main_screen/widgets/list_absensi.dart';
 import 'package:ngantor/pages/user_pages/main_screen/widgets/profile_sheet.dart';
 import 'package:ngantor/pages/user_pages/main_screen/widgets/tanggal_waktu.dart';
 import 'package:ngantor/services/providers/attendance_provider.dart';
 import 'package:ngantor/services/providers/maps_provider.dart';
+import 'package:ngantor/services/providers/profile_provider.dart';
 import 'package:ngantor/services/shared_preferences/prefs_handler.dart';
 import 'package:ngantor/utils/colors/app_colors.dart';
 import 'package:ngantor/utils/styles/app_btn_style.dart';
@@ -28,30 +30,46 @@ class _MainScreenState extends State<MainScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Future.microtask(() => 
-      Provider.of<AttendanceProvider>(context, listen: false).getListAbsensi()
-    );
+    Future.microtask(() async { 
+      await Provider.of<AttendanceProvider>(context, listen: false).getListAbsensi();
+      await Provider.of<ProfileProvider>(context, listen: false).getdataProfile();
+    });
   }
+
   @override
   Widget build(BuildContext context) {
     final mapsProv = Provider.of<MapsProvider>(context);
     final attendProv = Provider.of<AttendanceProvider>(context);
+    final profileProv = Provider.of<ProfileProvider>(context);
     bool isLoading = attendProv.isLoading;
+    bool isLoadProfile = profileProv.isLoading;
     
+    Data profile = profileProv.dataProfile;
+
     return Scaffold(
       backgroundColor: AppColors.primary,
       appBar: AppBar(
         backgroundColor: AppColors.primary,
         actions: [
-          GestureDetector(
-            onTap: () {
-              showProfileSheet(context, name: "john", email: "john@gmail.com", createdAt: DateTime.now(), updatedAt: DateTime.now());
-            },
-            child: CircleAvatar(
+          isLoadProfile
+          ? CircleAvatar(
               backgroundColor: AppColors.background,
-              child: Icon(Icons.person, color: AppColors.primary,),
+              child: CircularProgressIndicator(color: AppColors.primary,),
+          )
+          : GestureDetector(
+              onTap: () {
+                showProfileSheet(
+                  context, 
+                  name: profile.name!, 
+                  email: profile.email!, 
+                  createdAt: profile.createdAt!, 
+                  updatedAt: profile.updatedAt!);
+              },
+              child: CircleAvatar(
+                backgroundColor: AppColors.background,
+                child: Icon(Icons.person, color: AppColors.primary,),
+              ),
             ),
-          ),
           SizedBox(width: 20,)
         ],
       ),

@@ -4,6 +4,7 @@ import 'package:ngantor/pages/auth_pages/register/register_page.dart';
 import 'package:ngantor/pages/splash_page/splash_screen.dart';
 import 'package:ngantor/pages/user_pages/main_screen/main_screen.dart';
 import 'package:ngantor/services/providers/attendance_provider.dart';
+import 'package:ngantor/services/providers/profile_provider.dart';
 import 'package:ngantor/services/providers/widget_provider.dart';
 import 'package:ngantor/services/providers/auth_provider.dart';
 import 'package:ngantor/services/providers/maps_provider.dart';
@@ -17,6 +18,7 @@ void main() {
         ChangeNotifierProvider(create: (context) => MapsProvider(),),
         ChangeNotifierProvider(create: (context) => AuthProvider(),),
         ChangeNotifierProvider(create: (context) => AttendanceProvider(),),
+        ChangeNotifierProvider(create: (context) => ProfileProvider(),),
       ],
       child: MyApp(),
     ),
