@@ -118,7 +118,7 @@ Widget buildListAbsensi(List<Datum> absensi, AttendanceProvider provider) {
                       child: IconButton(
                         onPressed: () async{
                           CustomDialog().loading(context);
-                          provider.deleteAbsenUser(context, id: absen.id!);
+                          await provider.deleteAbsenUser(context, id: absen.id!);
                         }, 
                         icon: Icon(Icons.delete, color: AppColors.warning,)
                       ),

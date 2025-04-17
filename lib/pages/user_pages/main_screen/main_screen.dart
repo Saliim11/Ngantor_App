@@ -60,6 +60,7 @@ class _MainScreenState extends State<MainScreen> {
               onTap: () {
                 showProfileSheet(
                   context, 
+                  profileProv,
                   name: profile.name!, 
                   email: profile.email!, 
                   createdAt: profile.createdAt!, 

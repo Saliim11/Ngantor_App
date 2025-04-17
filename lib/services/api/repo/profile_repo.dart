@@ -7,3 +7,13 @@ Future<http.Response> getProfileAPI(String token) {
     headers: {'Accept': 'application/json', 'Authorization': "Bearer $token"}
   );
 }
+
+Future<http.Response> updateProfileAPI(String token, String nama) {
+  return http.put(
+    Uri.parse("${Endpoint.baseUrl}/api/profile"),
+    headers: {'Accept': 'application/json', 'Authorization': "Bearer $token"},
+    body: ({
+      "name": nama
+    })
+  );
+}

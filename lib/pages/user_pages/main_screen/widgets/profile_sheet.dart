@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:ngantor/services/providers/profile_provider.dart';
+import 'package:ngantor/services/shared_preferences/prefs_handler.dart';
 import 'package:ngantor/utils/colors/app_colors.dart';
 import 'package:ngantor/utils/styles/app_btn_style.dart';
+import 'package:ngantor/utils/widgets/dialog.dart';
+import 'package:provider/provider.dart';
 
-void showProfileSheet(BuildContext context, {
+void showProfileSheet(BuildContext context, ProfileProvider prov, {
   required String name,
   required String email,
   required DateTime createdAt,
@@ -90,13 +94,11 @@ void showProfileSheet(BuildContext context, {
                                     child: Text("Batal", style: TextStyle(color: AppColors.textSecondary)),
                                   ),
                                   ElevatedButton(
-                                    onPressed: () {
+                                    onPressed: () async{
                                       final newName = _nameController.text.trim();
                                       if (newName.isNotEmpty && newName != name) {
-                                        // TODO: Update ke Firestore atau Provider
-                                        print("Nama diperbarui: $newName");
-                                        Navigator.pop(context); // tutup dialog
-                                        Navigator.pop(context); // tutup profile sheet
+                                        CustomDialog().loading(context);
+                                        await prov.updateProfileUser(context, nama: newName);
                                       }
                                     },
                                     style: AppBtnStyle.normalS,
@@ -116,7 +118,8 @@ void showProfileSheet(BuildContext context, {
                       width: 100,
                       child: ElevatedButton.icon(
                         onPressed: () {
-                      
+                          PrefsHandler.removeToken();
+                          Navigator.pushReplacementNamed(context, "/login");
                         },
                         style: AppBtnStyle.merah,
                         icon: Icon(Icons.logout, color: Colors.white,),

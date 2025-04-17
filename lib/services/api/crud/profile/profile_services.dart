@@ -16,4 +16,11 @@ class ProfileServices {
     }
   }
 
+  Future<String> updateProfile(String token, String nama) async{
+    final response = await updateProfileAPI(token, nama);
+    final json = jsonDecode(response.body);
+    
+    return json["message"] ?? "default message update profile";
+  }
+
 }
