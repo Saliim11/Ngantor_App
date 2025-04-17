@@ -98,9 +98,9 @@ class _MainScreenState extends State<MainScreen> {
                   Row(
                     children: [
                       SizedBox(width: 10),
-                      Expanded(child: datePicker(context, widgetProv, tglStart)),
+                      Expanded(child: datePicker(context, widgetProv, tglStart, "Start")),
                       SizedBox(width: 10),
-                      Expanded(child: datePicker(context, widgetProv, tglEnd)),
+                      Expanded(child: datePicker(context, widgetProv, tglEnd, "End")),
                       SizedBox(width: 10),
                       ElevatedButton(
                         onPressed: () async {

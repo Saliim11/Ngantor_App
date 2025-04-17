@@ -12,6 +12,22 @@ class MapsProvider with ChangeNotifier {
   double _currentLat = 0;
   double _currentLong = 0;
 
+  String _jalan = "";
+  String _kelurahan = "";
+  String _kecamatan = "";
+  String _kota = "";
+  String _provinsi = "";
+  String _negara = "";
+  String _kodePos = "";
+
+  String get jalan => _jalan;
+  String get kelurahan => _kelurahan;
+  String get kecamatan => _kecamatan;
+  String get kota => _kota;
+  String get provinsi => _provinsi;
+  String get negara => _negara;
+  String get kodePos => _kodePos;
+
   bool get isLoading => _isLoading;
   String get currentAddress => _currentAddress;
   String get currentAddress2 => _currentAddress2;
