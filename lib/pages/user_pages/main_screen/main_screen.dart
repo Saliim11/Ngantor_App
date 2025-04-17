@@ -188,9 +188,8 @@ class _MainScreenState extends State<MainScreen> {
                                                 ),
                                                 actions: [
                                                   ElevatedButton(
-                                                    onPressed: () async {
-                                                      String token = await PrefsHandler.getToken();
-                                                      await attendProv.checkInIzinUser(context, lat: _currentLat, long: _currentLong, address: _currentAddress, token: token, alasan: _contAlasan.text);
+                                                    onPressed: ()  {
+                                                     attendProv.checkInIzinUser(context, lat: _currentLat, long: _currentLong, address: _currentAddress, alasan: _contAlasan.text);
                                                     }, 
                                                     child: Text("Izin")
                                                   )

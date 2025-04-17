@@ -58,7 +58,8 @@ class AttendanceProvider with ChangeNotifier{
     }
   }
 
-  Future<void> checkInIzinUser(BuildContext context, {required double lat, required double long, required String address, required String token, required String alasan}) async{
+  Future<void> checkInIzinUser(BuildContext context, {required double lat, required double long, required String address, required String alasan}) async{
+    String token = await PrefsHandler.getToken();
     try {
       Map<String, dynamic> _responseReg = await AttendanceServices().checkInIzin(lat, long, address, token, alasan);
 

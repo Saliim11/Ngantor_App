@@ -6,7 +6,9 @@ import 'package:ngantor/utils/colors/app_colors.dart';
 import 'package:ngantor/utils/widgets/dialog.dart';
 
 Widget buildListAbsensi(List<Datum> absensi, AttendanceProvider provider) {
-  return ListView.builder(
+  return absensi == [] 
+  ? Center(child: Text("Anda belum pernah melakukan absen"),)
+  : ListView.builder(
     itemCount: absensi.length,
     itemBuilder: (context, index) {
       final absen = absensi[index];
@@ -16,6 +18,8 @@ Widget buildListAbsensi(List<Datum> absensi, AttendanceProvider provider) {
       final formattedDateCheckOut = absen.checkOut != null
           ? DateFormat('dd MMM yyyy – HH:mm').format(absen.checkIn!)
           : 'Belum Checkout';
+      
+      final isIzin = absen.status == "izin";
 
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -64,7 +68,7 @@ Widget buildListAbsensi(List<Datum> absensi, AttendanceProvider provider) {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Alamat Check-in:',
+                      isIzin ? 'Alamat Check-in Izin' : 'Alamat Check-in:',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: AppColors.textPrimary,
@@ -76,37 +80,38 @@ Widget buildListAbsensi(List<Datum> absensi, AttendanceProvider provider) {
                       style: TextStyle(color: AppColors.textSecondary),
                     ),
 
-                    SizedBox(height: 10),
-                    SizedBox(height: 10),
-                    Text(
-                      'Waktu Check-out:',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.textPrimary,
+                    if(!isIzin) ...[
+                      SizedBox(height: 20),
+                      Text(
+                        'Waktu Check-out:',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.textPrimary,
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 4),
-                    Text(
-                      formattedDateCheckOut,
-                      style: TextStyle(
-                        color: absen.checkOut != null
-                            ? AppColors.textSecondary
-                            : AppColors.warning,
-                        fontStyle: absen.checkOut == null ? FontStyle.italic : FontStyle.normal,
+                      SizedBox(height: 4),
+                      Text(
+                        formattedDateCheckOut,
+                        style: TextStyle(
+                          color: absen.checkOut != null
+                              ? AppColors.textSecondary
+                              : AppColors.warning,
+                          fontStyle: absen.checkOut == null ? FontStyle.italic : FontStyle.normal,
+                        ),
                       ),
-                    ),
-                    Text(
-                      'Alamat Check-out:',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.textPrimary,
+                      Text(
+                        'Alamat Check-out:',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.textPrimary,
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 4),
-                    Text(
-                      absen.checkOutAddress ?? "-",
-                      style: TextStyle(color: AppColors.textSecondary),
-                    ),
+                      SizedBox(height: 4),
+                      Text(
+                        absen.checkOutAddress ?? "-",
+                        style: TextStyle(color: AppColors.textSecondary),
+                      ),
+                    ],
                     
                     Align(
                       alignment: Alignment.center,
