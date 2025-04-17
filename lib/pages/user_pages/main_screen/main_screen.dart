@@ -4,6 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:ngantor/pages/user_pages/main_screen/widgets/list_absensi.dart';
+import 'package:ngantor/pages/user_pages/main_screen/widgets/profile_sheet.dart';
 import 'package:ngantor/pages/user_pages/main_screen/widgets/tanggal_waktu.dart';
 import 'package:ngantor/services/providers/attendance_provider.dart';
 import 'package:ngantor/services/providers/maps_provider.dart';
@@ -42,9 +43,16 @@ class _MainScreenState extends State<MainScreen> {
       appBar: AppBar(
         backgroundColor: AppColors.primary,
         actions: [
-          CircleAvatar(
-            backgroundColor: AppColors.accent,
-          )
+          GestureDetector(
+            onTap: () {
+              showProfileSheet(context, name: "john", email: "john@gmail.com", createdAt: DateTime.now(), updatedAt: DateTime.now());
+            },
+            child: CircleAvatar(
+              backgroundColor: AppColors.background,
+              child: Icon(Icons.person, color: AppColors.primary,),
+            ),
+          ),
+          SizedBox(width: 20,)
         ],
       ),
       body: Column(
@@ -191,6 +199,7 @@ class _MainScreenState extends State<MainScreen> {
                                                     onPressed: ()  {
                                                      attendProv.checkInIzinUser(context, lat: _currentLat, long: _currentLong, address: _currentAddress, alasan: _contAlasan.text);
                                                     }, 
+                                                    style: AppBtnStyle.normal,
                                                     child: Text("Izin")
                                                   )
                                                 ],

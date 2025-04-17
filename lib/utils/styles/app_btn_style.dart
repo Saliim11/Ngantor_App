@@ -10,6 +10,13 @@ class AppBtnStyle {
     ),
     padding: const EdgeInsets.symmetric(vertical: 14),
   );
+  static ButtonStyle normalS = ElevatedButton.styleFrom(
+    backgroundColor: AppColors.primary,
+    foregroundColor: Colors.white,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(12),
+    ),
+  );
   static ButtonStyle normalBold = ElevatedButton.styleFrom(
     backgroundColor: AppColors.primary,
     foregroundColor: Colors.white,
@@ -33,6 +40,14 @@ class AppBtnStyle {
   );
   static ButtonStyle merah = ElevatedButton.styleFrom(
     backgroundColor: AppColors.warning,
+    foregroundColor: Colors.white,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(12),
+    ),
+    padding: const EdgeInsets.symmetric(vertical: 14),
+  );
+  static ButtonStyle biru = ElevatedButton.styleFrom(
+    backgroundColor: AppColors.accent,
     foregroundColor: Colors.white,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(12),
