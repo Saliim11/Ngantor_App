@@ -5,7 +5,6 @@ import 'package:ngantor/services/shared_preferences/prefs_handler.dart';
 import 'package:ngantor/utils/colors/app_colors.dart';
 import 'package:ngantor/utils/styles/app_btn_style.dart';
 import 'package:ngantor/utils/widgets/dialog.dart';
-import 'package:provider/provider.dart';
 
 void showProfileSheet(BuildContext context, ProfileProvider prov, {
   required String name,

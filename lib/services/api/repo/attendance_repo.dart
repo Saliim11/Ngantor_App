@@ -44,6 +44,13 @@ Future<http.Response> checkInIzinUserAPI(double lat, double long, String address
 Future<http.Response> getAbsensiAPI(String token) {
   return http.get(
     Uri.parse("${Endpoint.baseUrl}/api/absen/history"),
+    headers: {'Accept': 'application/json', 'Authorization': "Bearer $token"},
+  );
+}
+
+Future<http.Response> getAbsensiFilteredAPI(String token, String tgl_start, String tgl_end) {
+  return http.get(
+    Uri.parse("${Endpoint.baseUrl}/api/absen/history?start=$tgl_start&end=$tgl_end"),
     headers: {'Accept': 'application/json', 'Authorization': "Bearer $token"}
   );
 }

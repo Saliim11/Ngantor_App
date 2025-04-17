@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
 
 class WidgetProvider with ChangeNotifier {
   int? _expandedField = -1;
@@ -31,5 +33,22 @@ class WidgetProvider with ChangeNotifier {
         break;
     }
     notifyListeners();
+  }
+
+  // TextEditingController _selectedDate = new TextEditingController();
+  // TextEditingController get selectedDate => _selectedDate;
+
+  void pickDate(BuildContext context, TextEditingController _selectedDate) async {
+    DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2025),
+      lastDate: DateTime.now(),
+    );
+    if (pickedDate != null) {
+      String formattedDate = DateFormat("yyyy-MM-dd").format(pickedDate);
+      _selectedDate.text = formattedDate;
+      notifyListeners();
+    }
   }
 }

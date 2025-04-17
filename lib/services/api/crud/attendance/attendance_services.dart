@@ -70,6 +70,18 @@ class AttendanceServices {
     }
   }
 
+  Future<AbsenModel> getAbsensiFiltered(String token, String tgl_start, String tgl_end) async{
+    // dapatkan response dari API
+    final response = await getAbsensiFilteredAPI(token, tgl_start, tgl_end);
+    final json = jsonDecode(response.body);
+    
+    if (response.statusCode == 200) {
+      return AbsenModel.fromJson(json as Map<String, dynamic>);
+    }else{
+      throw Exception('Failed to load absensi filtered');
+    }
+  }
+
   Future<String> deleteAbsen(String token, int id) async{
     final response = await deleteAbsenAPI(token, id);
     final json = jsonDecode(response.body);

@@ -97,6 +97,21 @@ class AttendanceProvider with ChangeNotifier{
     }
   }
 
+  Future<void> getListAbsensiFiltered({required String tgl_start, required String tgl_end}) async{
+    _isLoading = true;
+    notifyListeners();
+    String token = await PrefsHandler.getToken();
+    try {
+      AbsenModel dataAbsen = await AttendanceServices().getAbsensiFiltered(token, tgl_start, tgl_end);
+      _listAbsen = dataAbsen.data ?? [];
+    } catch (e) {
+      throw Exception("Failed to load data absen filtered: $e");
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+
   Future<void> deleteAbsenUser(BuildContext context, {required int id}) async{
     String token = await PrefsHandler.getToken();
 
