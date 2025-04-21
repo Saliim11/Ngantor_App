@@ -61,8 +61,15 @@ class MapsProvider with ChangeNotifier {
         Placemark place = placemarks.first;
         _currentAddress =
                "${place.street}, ${place.subLocality}, ${place.locality}, ${place.subAdministrativeArea}, ${place.administrativeArea}, ${place.country}, ${place.postalCode}, ${place.country}, ${place.isoCountryCode}";
-        _currentAddress2 =
-            "Jalan:\n${place.street}\nKelurahan:\n${place.subLocality}\nKecamatan:\n${place.locality}\nKota:\n${place.subAdministrativeArea}\nProvinsi:\n${place.administrativeArea}\nNegara:\n${place.country}, ${place.isoCountryCode}\nKode pos:\n${place.postalCode}";
+               
+        _jalan = place.street!;
+        _kelurahan = place.subLocality!;
+        _kecamatan = place.locality!;
+        _kota = place.subAdministrativeArea!;
+        _provinsi = place.administrativeArea!;
+        _negara = "${place.country}, ${place.isoCountryCode}";
+        _kodePos = place.postalCode!;
+
         _currentLatLong = "${position.latitude}, ${position.longitude}";
         _currentLat = position.latitude;
         _currentLong = position.longitude;

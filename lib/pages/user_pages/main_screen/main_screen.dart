@@ -4,6 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:ngantor/models/user_model.dart';
+import 'package:ngantor/pages/user_pages/main_screen/widgets/alamat_lengkap.dart';
 import 'package:ngantor/pages/user_pages/main_screen/widgets/filter_tanggal.dart';
 import 'package:ngantor/pages/user_pages/main_screen/widgets/list_absensi.dart';
 import 'package:ngantor/pages/user_pages/main_screen/widgets/profile_sheet.dart';
@@ -148,11 +149,18 @@ class _MainScreenState extends State<MainScreen> {
             isScrollControlled: true,
             builder: (context) {
               String _currentAddress = mapsProv.currentAddress;
-              String _currentAddress2 = mapsProv.currentAddress2;
               String _currentLatLong = mapsProv.currentLatLong;
               final _currentLat = mapsProv.currentLat;
               final _currentLong = mapsProv.currentLong;
 
+              final _jalan = mapsProv.jalan;
+              final _kelurahan = mapsProv.kelurahan;
+              final _kecamatan = mapsProv.kecamatan;
+              final _kota = mapsProv.kota;
+              final _provinsi = mapsProv.provinsi;
+              final _negara = mapsProv.negara;
+              final _kodePos = mapsProv.kodePos;
+              
               final attendProv = Provider.of<AttendanceProvider>(context);
 
               return Container(
@@ -171,23 +179,13 @@ class _MainScreenState extends State<MainScreen> {
                               zoom: 14.4746,
                             ),
                             onMapCreated: (GoogleMapController controller) {
-                              _controller.complete(controller);
+                              if (!_controller.isCompleted) {
+                                _controller.complete(controller);
+                              }
                             },
                             mapType: MapType.normal,
                             myLocationEnabled: true,
                             compassEnabled: true,
-                            // circles: Set<Circle>.of(<Circle>[
-                            //   Circle(
-                            //     circleId: const CircleId("circle"),
-                            //     center: LatLng(_currentLat, _currentLong),
-                            //     radius: 5,
-                            //     fillColor: AppColors.accent.withOpacity(
-                            //       0.5,
-                            //     ),
-                            //     strokeWidth: 2,
-                            //     strokeColor: AppColors.accent,
-                            //   ),
-                            // ]),
                             gestureRecognizers: {
                               Factory<OneSequenceGestureRecognizer>(
                                 () => EagerGestureRecognizer(),
@@ -208,7 +206,7 @@ class _MainScreenState extends State<MainScreen> {
                                 builder: (context) {
                                   return AlertDialog(
                                     title: Text("Check out Kantor"),
-                                    content: Text("Anda akan melakukan Check out di\n$_currentAddress2\n"),
+                                    content: buildAlamatLengkap(jalan: _jalan, kelurahan: _kelurahan, kecamatan: _kecamatan, kota: _kota, provinsi: _provinsi, negara: _negara, kodePos: _kodePos),
                                     actionsAlignment: MainAxisAlignment.center,
                                     actions: [           
                                       ElevatedButton(
@@ -239,7 +237,7 @@ class _MainScreenState extends State<MainScreen> {
                                 builder: (context) {
                                   return AlertDialog(
                                     title: Text("Check in Kantor"),
-                                    content: Text("Anda akan melakukan check in di\n$_currentAddress2\n"),
+                                    content: buildAlamatLengkap(jalan: _jalan, kelurahan: _kelurahan, kecamatan: _kecamatan, kota: _kota, provinsi: _provinsi, negara: _negara, kodePos: _kodePos),
                                     actionsAlignment: MainAxisAlignment.spaceBetween,
                                     actions: [
                                       TextButton(

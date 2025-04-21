@@ -17,14 +17,17 @@ class AttendanceProvider with ChangeNotifier{
       if (_responseReg["success"] == true) {
         getListAbsensi();
         CustomDialog().hide(context);
+        CustomDialog().hide(context);
         CustomDialog().message(context, pesan: _responseReg['data']['message']);
         
       } else {
+        CustomDialog().hide(context);
         CustomDialog().hide(context);
         CustomDialog().message(context, pesan: _responseReg['message']);
       }
       
     } catch (e) {
+      CustomDialog().hide(context);
       CustomDialog().hide(context);
       CustomDialog().message(context, pesan: "error saat Check in: $e");
     } finally {
@@ -42,14 +45,17 @@ class AttendanceProvider with ChangeNotifier{
       if (_responseReg["success"] == true) {
         getListAbsensi();
         CustomDialog().hide(context);
+        CustomDialog().hide(context);
         CustomDialog().message(context, pesan: _responseReg['data']['message']);
         
       } else {
+        CustomDialog().hide(context);
         CustomDialog().hide(context);
         CustomDialog().message(context, pesan: _responseReg['message']);
       }
       
     } catch (e) {
+      CustomDialog().hide(context);
       CustomDialog().hide(context);
       CustomDialog().message(context, pesan: "error saat Check in: $e");
     } finally {
@@ -66,14 +72,20 @@ class AttendanceProvider with ChangeNotifier{
       if (_responseReg["success"] == true) {
         getListAbsensi();
         CustomDialog().hide(context);
+        CustomDialog().hide(context);
+        CustomDialog().hide(context);
         CustomDialog().message(context, pesan: _responseReg['data']['message']);
         
       } else {
+        CustomDialog().hide(context);
+        CustomDialog().hide(context);
         CustomDialog().hide(context);
         CustomDialog().message(context, pesan: _responseReg['message']);
       }
       
     } catch (e) {
+      CustomDialog().hide(context);
+      CustomDialog().hide(context);
       CustomDialog().hide(context);
       CustomDialog().message(context, pesan: "error saat Izin: $e");
     } 
