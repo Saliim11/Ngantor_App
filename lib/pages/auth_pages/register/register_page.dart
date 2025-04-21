@@ -85,7 +85,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 Text("Sudah punya akun?", style: TextStyle(color: AppColors.textSecondary)),
                 TextButton(
                   onPressed: () {
-                    
+                    Navigator.pushReplacementNamed(context, "/login");
                   }, 
                   child: Text("Login Sekarang", style: TextStyle(color: AppColors.accent, fontWeight: FontWeight.bold))
                 )

@@ -23,22 +23,11 @@ class LoginPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // Logo atau Judul
-              Column(
-                children: [
-                  Icon(Icons.business_center, size: 64, color: AppColors.primary),
-                  const SizedBox(height: 8),
-                  Text(
-                    'Ngantor',
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.primary,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 40),
+              // Logo
+              SizedBox(
+                height: 200,
+                width: 200,
+                child: Image.asset("assets/images/logo2_teks.png")),
 
               // Email
               TextField(

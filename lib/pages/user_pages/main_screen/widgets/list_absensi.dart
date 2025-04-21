@@ -111,6 +111,20 @@ Widget buildListAbsensi(List<Datum> absensi, AttendanceProvider provider) {
                         absen.checkOutAddress ?? "-",
                         style: TextStyle(color: AppColors.textSecondary),
                       ),
+                    ]else ...[
+                      SizedBox(height: 20),
+                      Text(
+                        'Alasan Izin',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.textPrimary,
+                        ),
+                      ),
+                      SizedBox(height: 4),
+                      Text(
+                        absen.alasanIzin ?? "-",
+                        style: TextStyle(color: AppColors.textSecondary),
+                      ),
                     ],
                     
                     Align(
