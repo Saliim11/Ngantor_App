@@ -117,8 +117,26 @@ void showProfileSheet(BuildContext context, ProfileProvider prov, {
                       width: 100,
                       child: ElevatedButton.icon(
                         onPressed: () {
-                          PrefsHandler.removeToken();
-                          Navigator.pushReplacementNamed(context, "/login");
+                          showDialog(
+                            context: context, 
+                            builder: (context) {
+                              return AlertDialog(
+                                title: Text("Yakin Ingin Logout?"),
+                                actionsAlignment: MainAxisAlignment.center,
+                                actions: [
+                                  ElevatedButton.icon(
+                                    onPressed: () {
+                                      PrefsHandler.removeToken();
+                                      Navigator.pushNamedAndRemoveUntil(context, "/login", ModalRoute.withName("/login"));
+                                    }, 
+                                    style: AppBtnStyle.merah,
+                                    icon: Icon(Icons.logout, color: Colors.white,),
+                                    label: Text("Logout"),
+                                  )
+                                ],
+                              );
+                            },
+                          );
                         },
                         style: AppBtnStyle.merah,
                         icon: Icon(Icons.logout, color: Colors.white,),
